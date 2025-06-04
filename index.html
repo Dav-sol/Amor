@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Aniversario</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffe6e6;
+      text-align: center;
+      padding-top: 60px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #d80073;
+      animation: fadeIn 2s ease;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 5px;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      margin: 40px auto;
+      perspective: 1000px;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      background: #ff9999;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.5s;
+    }
+
+    .flap {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-bottom: 110px solid #ff6666;
+      z-index: 3;
+      transform-origin: top center;
+      transition: transform 0.5s ease;
+    }
+
+    .heart {
+      position: absolute;
+      top: 95px;
+      left: 140px;
+      width: 40px;
+      height: 40px;
+      background: red;
+      transform: rotate(45deg);
+      z-index: 4;
+      animation: pulse 1.5s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -20px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -20px;
+    }
+
+    .letter {
+      display: none;
+      position: absolute;
+      top: -160px;
+      left: 0;
+      width: 100%;
+      background: #fffde8;
+      border: 1px solid #ccc;
+      padding: 25px 15px;
+      font-size: 16px;
+      z-index: 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: slideDown 0.5s ease forwards;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      background-color: #ff3399;
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      margin: 0 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e60073;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1) rotate(45deg);
+      }
+      50% {
+        transform: scale(1.1) rotate(45deg);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¡Feliz Aniversario! ❤️</h1>
+  <p>Una pequeña sorpresa para ti...</p>
+
+  <div class="envelope-container">
+    <div class="letter" id="carta">
+      <p>Hoy hace 3 años que nos subimos a este barco.<br>
+      Han sido 3 años llenos de experiencias, risas y muchísimo amor. No ha sido perfecto, pero a tu lado sé que ha sido lo mejor.</p>
+      <p>Gracias por ser mi amor, mi compañera, mi todo.<br>
+      Gracias por quedarte, por crecer a mi lado, por caminar conmigo. No sé qué traerá el futuro, pero sé que quiero vivirlo contigo.</p>
+      <p>Feliz aniversario, mi vida. Por este… y por todos los que aún nos esperan.<br>
+      Te amo con toda mi alma. 💗</p>
+    </div>
+    <div class="envelope" id="sobre"></div>
+    <div class="flap" id="solapa"></div>
+    <div class="heart"></div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="abrirCarta()">Abrir</button>
+    <button onclick="cerrarCarta()">Cerrar</button>
+  </div>
+
+  <script>
+    function abrirCarta() {
+      document.getElementById("carta").style.display = "block";
+      document.getElementById("solapa").style.transform = "rotateX(-180deg)";
+    }
+
+    function cerrarCarta() {
+      document.getElementById("carta").style.display = "none";
+      document.getElementById("solapa").style.transform = "rotateX(0deg)";
+    }
+  </script>
+
+</body>
+</html>
